@@ -49,7 +49,6 @@ ObjectToLine возвращает тестовую линию _projectLine со�
 
 
 
-![рис 2](https://github.com/user-attachments/assets/70c5b0d6-48ab-4772-a427-1594520fa41b)
 
 
 
