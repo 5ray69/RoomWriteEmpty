@@ -75,10 +75,3 @@ namespace RoomWriteEmpty.MyDll
     }
 }
 
-
-                        //// Собираем уровни и сортируем их по высоте
-                        //FilteredElementCollector levelCollector = new(doc);
-                        //List<Level> levels = [.. levelCollector.OfClass(typeof(Level)).OfType<Level>()];  // создаем список, чтоб воспользоваться методами списка, они по скорости быстрее, чем LINQ или ручная сортирвка
-
-                        //// Сортируем уровни один раз по Elevation
-                        //_cachedLevels = levels.Sort((lev1, lev2) => lev1.Elevation.CompareTo(lev2.Elevation));

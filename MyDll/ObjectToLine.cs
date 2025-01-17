@@ -12,12 +12,12 @@ namespace RoomWriteEmpty.Models.MyDll
         public readonly double _lengthOutLine = UnitUtils.ConvertToInternalUnits(lengthOutLine, UnitTypeId.Millimeters);
 
 
-        //        /// <summary>
-        //        /// <para>создает линию из Line, или из XYZ,
-        //        /// <para>длиной 100 метров,
-        //        /// <para>на уровне координаты Z уровня помещения
-        //        /// </summary>
-        //        /// <returns></returns>
+        /// <summary>
+        /// <para>создает линию из Line, или из XYZ,
+        /// <para>длиной 100 метров,
+        /// <para>на уровне координаты Z уровня помещения
+        /// </summary>
+        /// <returns></returns>
         public Line GetCreatedLine()
         {
             Transform rotationDefault = Transform.CreateRotation(XYZ.BasisZ, 3 * (Math.PI / 180));// поворот на 3 градуса в радианах

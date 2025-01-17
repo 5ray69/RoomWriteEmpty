@@ -115,33 +115,3 @@ namespace RoomWriteEmpty.MyDll
         }
     }
 }
-
-        ///// <summary>
-        ///// Id уровня, на котором находится любой объект электрика
-        ///// </summary>
-        ///// <returns></returns>
-        //public ElementId GetElementId(Element element)
-        //{
-        //    var level = GetLevel(element);
-        //    return level?.Id;
-        //}
-
-        ///// <summary>
-        ///// Имя уровня, на котором находится любой объект электрика
-        ///// </summary>
-        ///// <returns></returns>
-        //public string GetName(Element element)
-        //{
-        //    var level = GetLevel(element);
-        //    return level?.Name;
-        //}
-
-        ///// <summary>
-        ///// Высотная отметка уровня, на котором находится любой объект электрика
-        ///// </summary>
-        ///// <returns></returns>
-        //public double? GetElevation(Element element)
-        //{
-        //    var level = GetLevel(element);
-        //    return level?.Elevation;
-        //}
