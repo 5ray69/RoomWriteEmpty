@@ -16,6 +16,9 @@ namespace RoomWriteEmpty.Models.MyDll.UserWarningStrings
 c Id элемента:
 {el.Id.IntegerValue}
 
+категория:
+{el.Category?.Name ?? "у элемента нет категории"}
+
 Обратитесь к координатору, чтоб параметры
 были добавлены в семейства.
 
