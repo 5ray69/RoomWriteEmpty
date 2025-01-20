@@ -5,23 +5,20 @@ using Line = Autodesk.Revit.DB.Line;
 
 namespace RoomWriteEmpty.Models.MyDll
 {
-    public class IsLocated(Room room, Line projectLine, Transform linkTransform)
+    public class IsLocated
     {
-        public readonly double _levelZ = room.Level.Elevation;
-
         /// <summary>
         /// <para>ВОЗВРАЩАЕТ TRUE ЕСЛИ ОБЪЕКТ В ПОМЕЩЕНИИ.
         /// <para>Принимает преобразованную Line из ObjectToLine.
         /// <para>Даже если одна точка/край линии лежит на границе помещения, а вся остальная часть линии вне.
         /// </summary>
         /// <returns></returns>
-        public bool InsideTheBorders()
+        public bool InsideTheBorders(List<Line> linesRoomBordersToZ, Line projectLine)
         {
-            ICollection<Line> bordersRoom = new BordersRoom(room, linkTransform).GetBordersToCenter();
-            CountIntersectionsWithPolygon countIntersectionsWithPolygon = new(bordersRoom, projectLine);
+            CountIntersectionsWithPolygon countIntersectionsWithPolygon = new(linesRoomBordersToZ, projectLine);
             HashSet<double> projectIntersect = countIntersectionsWithPolygon.GetHashSet();
 
-            //Првепка очень длинной линией. Начало линии всегда внутри помещения из которого линия исходит
+            //Провепка очень длинной линией. Начало линии всегда внутри помещения из которого линия исходит
 
             //ЕСЛИ КОЛИЧЕСТВО ПЕРЕСЕЧЕНИЙ В HashSet РАВНО НУЛЮ = ВНЕ ПОМЕЩЕНИЯ
             //остаток от деления нуля на 2 тоже ноль = четное

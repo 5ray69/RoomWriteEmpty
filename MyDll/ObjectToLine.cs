@@ -5,9 +5,8 @@ using Line = Autodesk.Revit.DB.Line;
 
 namespace RoomWriteEmpty.Models.MyDll
 {
-    public class ObjectToLine(Object lineOrXYZ, Room room, double lengthOutLine = 100000)
+    public class ObjectToLine(double lengthOutLine = 100000)
     {
-        public readonly double _levelZ = room.Level.Elevation;
         //lengthOutLine = 100000 длина здания около 60000мм (длинный коридор)
         public readonly double _lengthOutLine = UnitUtils.ConvertToInternalUnits(lengthOutLine, UnitTypeId.Millimeters);
 
@@ -18,8 +17,9 @@ namespace RoomWriteEmpty.Models.MyDll
         /// <para>на уровне координаты Z уровня помещения
         /// </summary>
         /// <returns></returns>
-        public Line GetCreatedLine()
+        public Line GetCreatedLine(Object lineOrXYZ, Room room)
         {
+            double _levelZ = room.Level.Elevation;
             Transform rotationDefault = Transform.CreateRotation(XYZ.BasisZ, 3 * (Math.PI / 180));// поворот на 3 градуса в радианах
             Transform translationDefault = Transform.CreateTranslation(new XYZ(0, _lengthOutLine, 0));
             Transform rotationTranslationDefault = rotationDefault.Multiply(translationDefault);

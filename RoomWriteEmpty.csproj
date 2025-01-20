@@ -58,7 +58,6 @@
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
     <Compile Include="MyDll\AllObjectsElectric.cs" />
-    <Compile Include="MyDll\BordersRoomProcessor.cs" />
     <Compile Include="MyDll\ElevationDouble.cs" />
     <Compile Include="MyDll\LevelAnyObject.cs" />
     <Compile Include="MyDll\LevelCache.cs" />
@@ -72,6 +71,7 @@
     <Compile Include="MyDll\PointSpatialElementOrPointLocation.cs" />
     <Compile Include="MyDll\IsLocated.cs" />
     <Compile Include="MyDll\ObjectToLine.cs" />
+    <Compile Include="MyDll\PolygonBordersRoom.cs" />
     <Compile Include="MyDll\RoomPlaced.cs" />
     <Compile Include="MyDll\ExceptionService\UserNotificationException.cs" />
     <Compile Include="MyDll\UserParameter.cs" />

@@ -19,7 +19,8 @@ namespace RoomWriteEmpty
         {
             try
             {
-                UIDocument uidoc = commandData.Application.ActiveUIDocument;
+                UIApplication uiapp = commandData.Application;
+                UIDocument uidoc = uiapp.ActiveUIDocument;
                 Document doc = uidoc.Document;
 
 
@@ -128,9 +129,14 @@ namespace RoomWriteEmpty
                     #endregion
 
 
+                    #region СОЗДАЕМ ЭКЗЕМПЛЯРЫ КЛАССОВ ВНЕ ЦИКЛОВ
                     LocationAnyObject locationAnyObject = new();
+                    ObjectToLine objectToLine = new();
+                    PolygonBordersRoom polygonBordersRoom = new(uiapp);
+                    IsLocated isLocated = new();
                     ParameterValidatorForEmpty validator = new(errorModel);
                     var levelDict = LevelCache.GetLevelDictionary(doc);  // словарь уровней из основного файла
+                    #endregion
 
 
                     #region ПРОВЕРКА ЕСТЬ ЛИ ИМЕНА УРОВНЕЙ СВЯЗИ В УРОВНЯХ ОСНОВНОГО ФАЙЛА
@@ -163,9 +169,12 @@ namespace RoomWriteEmpty
                             if (levelAnyObject.GetLevel(elem).Id == roomLevelId)
                             {
                                 var xyzOrCurve = locationAnyObject.GetSpatialElementOrLocationXyzOrLine(elem);
-                                ObjectToLine objectToLine = new(xyzOrCurve, room);
-                                IsLocated isLocated = new(room, objectToLine.GetCreatedLine(), linkTransform);
-                                if (isLocated.InsideTheBorders())
+
+                                List<Line> bordersRoom = new BordersRoom(room, linkTransform).GetBordersToCenter();
+
+                                List<Line> bordersRoomToZ = polygonBordersRoom.CreateCopy(bordersRoom, room);
+
+                                if (isLocated.InsideTheBorders(bordersRoomToZ, objectToLine.GetCreatedLine(xyzOrCurve, room)))
                                 {
                                     validator.ValidateAndSetParameter(elem, "БУДОВА_Номер квартиры", valueParamRoomFlat);
                                     validator.ValidateAndSetParameter(elem, "БУДОВА_Номер помещения", valueParamRoomNumber);
